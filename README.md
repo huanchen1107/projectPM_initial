@@ -1,57 +1,69 @@
 # projectPM_initial — 專案管理腳手架 (Scaffolding)
 
-這是一個專為 AI 協作開發設計的「專案管理腳手架」。透過這套工具，你可以讓 AI 助手自動接管所有瑣碎的行政與管理工作（如 Git 同步、日誌撰寫、教學歸檔、對話備份），讓你專注於核心技術開發。
+這是一個專為 AI 協作開發設計的「專案管理腳手架」。它的核心理念是：**讓 AI 助手自動接管行政與管理工作，讓人類開發者專注於創意與核心技術。**
+
+透過這套工具，你可以一鍵啟動一個具備專業版本控制、開發日誌、技術教學與對話備份功能的開發環境。
 
 ---
 
 ## 🎯 核心目的 (Core Purpose)
-在與 AI 助手（如 Antigravity, Claude, ChatGPT）長期的專案合作中，對話紀錄容易因長度限制而遺失，且開發過程中的決策往往缺乏系統性紀錄。本專案旨在解決：
-1.  **知識碎片化**：透過自動化的 `Tutorial` 與 `開發日誌` 將知識系統化。
-2.  **記憶遺失**：利用底層 Log 還原技術，確保所有對話 100% 歸檔。
-3.  **流程標準化**：無論開啟什麼新專案，都能一鍵建立專業的開發環境。
+在長期的 AI 協作中，我們常遇到：
+1.  **記憶遺失**：對話過長導致 AI 忘記初衷或關鍵決策。
+2.  **知識碎片化**：解決問題的技巧散落在對話中，沒有沉澱。
+3.  **環境混亂**：每個專案的管理方式不同，難以快速上手。
+
+**本儲存庫旨在透過「指令 (Master Prompt)」與「腳本」建立一套標準化的 AI 專案管理模式。**
 
 ---
 
 ## 🛠 功能特點 (Features)
-*   **🤖 AI 運作大腦 (`project_initial.md`)**：
-    包含一組經過優化的「大師指令 (Master Prompt)」，能引導 AI 自動建立 Repo、腳本與文件系統。
-*   **📜 全自動對話備份 (`reconstruct_dialog.py`)**：
-    自動撈取系統底層的 `overview.txt`，確保即使對話被壓縮，也能備份從第一句開始的所有歷史紀錄。
-*   **🚀 一鍵啟動引導 (`startup.sh`)**：
-    讓 AI 助手自動讀取指令並進入管理模式。
-*   **📦 自動化閉環 (`ending.sh`)**：
-    在收工前自動備份對話、提醒更新日誌、並同步推送到 GitHub。
+
+*   **🧠 AI 運作大腦 (`project_initial.md`)**
+    包含一個強大的「大師指令」，引導 AI 自動建立 Repo、設定遠端 Git、並建立專業的文件系統。
+*   **📜 完美記憶備份 (`reconstruct_dialog.py`)**
+    自動讀取系統底層 Log (`overview.txt`)，確保所有原始對話 100% 完整備份到 `dialog.md`，不再受 Context Window 限制。
+*   **🚀 一鍵啟動 (`startup.sh`)**
+    引導 AI 助手自動讀取專案規則並立刻進入「專案管理模式」。
+*   **📦 自動化閉環 (`ending.sh`)**
+    在收工前一鍵完成：對話還原、日誌更新、教學寫作、Git 推送。
 
 ---
 
-## 🚀 如何使用 (How to use)
+## 🚀 如何使用？ (Quick Start)
 
-### 1. 建立新專案
-當你想開始一個新計畫（例如 `my_new_ai`）時：
+### Step 1: 建立新專案
+當你想開啟任何新計畫時，直接 Clone 本腳手架：
 ```bash
-git clone https://github.com/huanchen1107/projectPM_initial.git my_new_ai
+git clone https://github.com/huanchen1107/projectPM_initial.git 新專案名稱
 ```
 
-### 2. 呼叫 AI 啟動初始化
-進入資料夾後，對你的 AI 助手說：
-> **「請執行 `startup.sh` 並開始初始化專案。」**
+### Step 2: 啟動初始化
+進入資料夾後，直接在 AI 對話框輸入：
+> **「我已經 Clone 好 PM 模板了，請執行 `startup.sh` 並開始初始化專案。」**
 
-### 3. AI 會自動執行以下步驟
-1.  詢問你的新 GitHub 網址並進行關聯。
-2.  建立當天的 `YYYY.MM.DD開發日誌.md`。
-3.  建立 `/Tutorial` 目錄並開始記錄第一項技術教學。
-4.  將原本的 `startup.sh` 與 `ending.sh` 轉換為適用於該專案的版本。
+### Step 3: AI 自動化管理
+AI 助手執行腳本後，會自動執行以下任務：
+1.  **關聯 GitHub**：詢問新專案的網址並完成 Git Remote 設定。
+2.  **建立日誌**：建立當天的 `YYYY.MM.DD開發日誌.md`。
+3.  **啟動教學**：建立 `/Tutorial` 目錄並開始記錄技術細節。
+4.  **轉換工具**：將腳手架腳本升級為專案專屬的管理工具。
 
 ---
 
-## 📁 建立歷程 (Initialization Steps)
-本儲存庫是根據以下邏輯建立的：
-1.  **環境準備**：建立專屬管理資料夾並初始化 Git。
-2.  **核心模板**：將「專案管理大師指令」存入 `project_initial.md` 作為 AI 的執行標準。
-3.  **自動化工具包**：放入通用版的 `reconstruct_dialog.py` 與啟動腳本。
-4.  **GitHub 連結**：同步至 `huanchen1107/projectPM_initial`。
+## 📁 建立歷程與步驟 (Scaffolding Logic)
+本儲存庫是根據以下技術路徑建立的：
+1.  **環境準備**：建立專屬資料夾並初始化 Git 環境。
+2.  **核心模板**：將完善後的「專案管理大師指令」存入 `project_initial.md`。
+3.  **啟動腳本**：撰寫偵測新環境並打印指令的 `startup.sh`。
+4.  **工具包**：放入具備「自動撈取底層 Log」能力的 `reconstruct_dialog.py`。
+5.  **GitHub 同步**：關聯至 `huanchen1107/projectPM_initial`。
 
 ---
 
 ## 💡 經驗總結
-這相當於為你的每個專案都請了一位專屬的 **「技術專案經理 (Technical PM)」**。你只需要下達指令，AI 就會一邊開發一邊幫你寫好所有的說明書與紀錄。
+這相當於為你的每個專案都請了一位專屬的 **「技術專案經理 (Technical PM)」**。你只需要下達指令，AI 就會一邊開發一邊幫你寫好所有的說明書、日誌與對話紀錄。
+
+---
+
+### 📎 相關連結
+*   **GitHub**: [https://github.com/huanchen1107/projectPM_initial](https://github.com/huanchen1107/projectPM_initial)

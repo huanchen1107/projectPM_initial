@@ -36,6 +36,7 @@ echo ""
 echo "🤖 嗨，AI 助手！請檢查以下事項："
 echo "1. 今天的進度是否已寫入開發日誌？"
 echo "2. dialog.md 是否已自動更新完畢？"
+echo "3. 是否已更新 Tutorials/ 資料夾中的分項任務教學 (tutorial_#.md)？"
 echo ""
 read -p "請確認以上事項皆已完成？ (按 Enter 繼續推送至 GitHub)"
 

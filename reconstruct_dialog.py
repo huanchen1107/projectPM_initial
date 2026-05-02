@@ -3,7 +3,7 @@ import os
 import glob
 
 # Try to find the latest overview.txt in the brain folder
-brain_path = os.path.expanduser("~/.gemini/antigravity/brain/")
+brain_path = "/Users/huanchen/.gemini/antigravity/brain/"
 log_files = glob.glob(os.path.join(brain_path, "*/.system_generated/logs/overview.txt"))
 
 if not log_files:
@@ -14,7 +14,8 @@ if not log_files:
 latest_log = max(log_files, key=os.path.getmtime)
 print(f"Reading logs from: {latest_log}")
 
-output_path = "dialog.md"
+# Output to user directory to keep project root clean
+output_path = "user/dialog.md"
 
 with open(latest_log, 'r') as f:
     lines = f.readlines()
@@ -39,6 +40,9 @@ for line in lines:
         dialog_md += "---\n\n"
     except Exception:
         continue
+
+# Ensure user directory exists
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
 with open(output_path, 'w') as f:
     f.write(dialog_md)
